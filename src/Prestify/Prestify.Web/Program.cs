@@ -1,4 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Prestify.Web.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<PrestifyDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PrestifyDbContext")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

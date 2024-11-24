@@ -1,0 +1,16 @@
+﻿<h3>Product</h3>
+
+@page "/products"
+@using Prestify.Web.Models
+
+@inject ProductService ProductService
+
+@code {
+    private List<Person> products;
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await ProductService.GetProductsAsync();
+
+    }
+}
